@@ -1,0 +1,238 @@
+"This script was created using Wolfram language"
+
+
+
+cs1 ="Front limit for the ";
+bs1 =;
+as1 =;
+
+ci1 =;
+bi1 =;
+ai1 =;
+
+
+datactest1 = 
+  Import["f1/depth/noobstacle/Test1sortedC0.csv", {"Data", 
+    Range[ci1, cs1]}];
+datcx = datactest1[[All, 1]];
+datcy = LowpassFilter[datactest1[[All, 2]], .1];
+datactest1 = Transpose[{datcx, datcy}];
+Length[datactest1]*100;
+
+
+databtest1 = 
+  Import["f1/depth/noobstacle/Test1sortedB0.csv", {"Data", 
+    Range[bi1, bs1]}];
+datbx = databtest1[[All, 1]];
+datby = LowpassFilter[databtest1[[All, 2]], .1];
+databtest1 = Transpose[{datbx, datby}];
+Length[databtest1]*100;
+
+dataatest1 = 
+  Import["f1/depth/noobstacle/Test1sortedA0.csv", {"Data", 
+    Range[ai1, as1]}];
+datax = dataatest1[[All, 1]];
+datay = LowpassFilter[dataatest1[[All, 2]], .1];
+dataatest1 = Transpose[{datax, datay}];
+Length[dataatest1]*100;
+
+
+
+{minci} = {MinimalBy[#, Last]} &@datactest1;
+{minbi} = {MinimalBy[#, Last]} &@databtest1;
+{minai} = {MinimalBy[#, Last]} &@dataatest1;
+
+
+Cplot = ListLinePlot[datactest1, PlotRange -> All, 
+  PlotLegends -> "Load Coefficient", 
+  Epilog -> {PointSize -> Medium, Red, Point@minci}]
+Bplot = ListLinePlot[databtest1, PlotRange -> All, 
+  PlotLegends -> "Load Coefficient", 
+  Epilog -> {PointSize -> Medium, Red, Point@minbi}]
+Aplot = ListLinePlot[dataatest1, PlotRange -> All, 
+  PlotLegends -> "Load Coefficient", 
+  Epilog -> {PointSize -> Medium, Red, Point@minai}]
+111111111111111111111111111111111111111111111111111111111111111111111
+
+Mindatactest1yi = minci[[All, 2]];
+Mindatabtest1yi = minbi[[All, 2]];
+Mindataatest1yi = minai[[All, 2]];
+avgMindatactest1yi = N[Mean[Mindatactest1yi]];
+avgMindatabtest1yi = N[Mean[Mindatabtest1yi]];
+avgMindataatest1yi = N[Mean[Mindataatest1yi]];
+
+Mindatactest1xi = minci[[All, 1]];
+Mindatabtest1xi = minbi[[All, 1]];
+Mindataatest1xi = minai[[All, 1]];
+avgMindatactest1xi = N[Mean[Mindatactest1xi]];
+avgMindatabtest1xi = N[Mean[Mindatabtest1xi]];
+avgMindataatest1xi = N[Mean[Mindataatest1xi]];
+
+
+
+
+
+(*Now we look for the maximum and next minimum, usign te superior \
+boundary as inferior now *)
+
+cs2 = 2625;
+bs2 = 2475;
+as2 = 2330;
+
+
+ci2 = cs1;
+bi2 = bs1;
+ai2 = as1;
+
+
+datactest1 = 
+  Import["f1/depth/noobstacle/Test1sortedC0.csv", {"Data", 
+    Range[ci2, cs2]}];
+datcx = datactest1[[All, 1]];
+datcy = LowpassFilter[datactest1[[All, 2]], .1];
+datactest1 = Transpose[{datcx, datcy}];
+Length[datactest1]*100;
+
+databtest1 = 
+  Import["f1/depth/noobstacle/Test1sortedB0.csv", {"Data", 
+    Range[bi2, bs2]}];
+datbx = databtest1[[All, 1]];
+datby = LowpassFilter[databtest1[[All, 2]], .1];
+databtest1 = Transpose[{datbx, datby}];
+Length[databtest1]*100;
+
+dataatest1 = 
+  Import["f1/depth/noobstacle/Test1sortedA0.csv", {"Data", 
+    Range[ai2, as2]}];
+datax = dataatest1[[All, 1]];
+datay = LowpassFilter[dataatest1[[All, 2]], .1];
+dataatest1 = Transpose[{datax, datay}];
+Length[dataatest1]*100;
+
+
+(*WE repeat now the same process but we change the variables name \
+cause we want to keep not only the minimum size but also the point \
+where that minimum is presented to calculate the wavelenght*)
+
+
+(*Firts the maximum*)
+{maxc} = {MaximalBy[#, Last]} &@datactest1;
+{maxb} = {MaximalBy[#, Last]} &@databtest1;
+{maxa} = {MaximalBy[#, Last]} &@dataatest1;
+
+
+Cplot = ListLinePlot[datactest1, PlotRange -> All, 
+  PlotLegends -> "Load Coefficient", 
+  Epilog -> {PointSize -> Medium, Red, Point@maxc}]
+Bplot = ListLinePlot[databtest1, PlotRange -> All, 
+  PlotLegends -> "Load Coefficient", 
+  Epilog -> {PointSize -> Medium, Red, Point@maxb}]
+Aplot = ListLinePlot[dataatest1, PlotRange -> All, 
+  PlotLegends -> "Load Coefficient", 
+  Epilog -> {PointSize -> Medium, Red, Point@maxa}]
+111111111111111111111111111111111111111111111111111111111111111111111
+
+Maxdatactest1y = maxc[[All, 2]];
+Maxdatabtest1y = maxb[[All, 2]];
+Maxdataatest1y = maxa[[All, 2]];
+avgMaxdatactest1y = N[Mean[Maxdatactest1y]];
+avgMaxdatabtest1y = N[Mean[Maxdatabtest1y]];
+avgMaxdataatest1y = N[Mean[Maxdataatest1y]];
+
+Maxdatactest1x = maxc[[All, 1]];
+Maxdatabtest1x = maxb[[All, 1]];
+Maxdataatest1x = maxa[[All, 1]];
+avgMaxdatactest1x = N[Mean[Maxdatactest1x]];
+avgMaxdatabtest1x = N[Mean[Maxdatabtest1x]];
+avgMaxdataatest1x = N[Mean[Maxdataatest1x]];
+
+velchbc = 2/(avgMaxdatabtest1x - avgMaxdatactest1x);
+
+velchab = 2/(avgMaxdataatest1x - avgMaxdatabtest1x);
+
+
+
+
+
+
+(*Now the minimum*)
+{mincs} = {MinimalBy[#, Last]} &@datactest1;
+{minbs} = {MinimalBy[#, Last]} &@databtest1;
+{minas} = {MinimalBy[#, Last]} &@dataatest1;
+
+
+Cplot = ListLinePlot[datactest1, PlotRange -> All, 
+  PlotLegends -> "Load Coefficient", 
+  Epilog -> {PointSize -> Medium, Red, Point@mincs}]
+Bplot = ListLinePlot[databtest1, PlotRange -> All, 
+  PlotLegends -> "Load Coefficient", 
+  Epilog -> {PointSize -> Medium, Red, Point@minbs}]
+Aplot = ListLinePlot[dataatest1, PlotRange -> All, 
+  PlotLegends -> "Load Coefficient", 
+  Epilog -> {PointSize -> Medium, Red, Point@minas}]
+
+
+Mindatactest1ys = mincs[[All, 2]];
+Mindatabtest1ys = minbs[[All, 2]];
+Mindataatest1ys = minas[[All, 2]];
+avgMindatactest1ys = N[Mean[Mindatactest1ys]];
+avgMindatabtest1ys = N[Mean[Mindatabtest1ys]];
+avgMindataatest1ys = N[Mean[Mindataatest1ys]];
+
+Mindatactest1xs = mincs[[All, 1]];
+Mindatabtest1xs = minbs[[All, 1]];
+Mindataatest1xs = minas[[All, 1]];
+avgMindatactest1xs = N[Mean[Mindatactest1xs]];
+avgMindatabtest1xs = N[Mean[Mindatabtest1xs]];
+avgMindataatest1xs = N[Mean[Mindataatest1xs]];
+
+
+
+
+
+
+
+(*Now te average*)
+
+deltatimec = avgMindatactest1xs - avgMindatactest1xi;
+deltatimeb = avgMindatabtest1xs - avgMindatabtest1xi;
+deltatimea = avgMindataatest1xs - avgMindataatest1xi;
+
+
+
+\[Lambda]c = velchbc*deltatimec;
+
+\[Lambda]b = (velchbc + velchab)/2*deltatimeb;
+
+\[Lambda]a = velchab*deltatimea;
+
+
+list\[Lambda]c1 = {\[Lambda]c}
+list\[Lambda]b1 = {\[Lambda]b}
+list\[Lambda]a1 = {\[Lambda]a}
+listvelbcnew1 = {velchbc}
+listvelabnew1 = {velchab}
+
+ic = Abs[Abs[avgMaxdatactest1y] - Abs[avgMindatactest1yi]];
+sc = Abs[Abs[avgMaxdatactest1y] - Abs[avgMindatactest1ys]];
+Difc = (Abs[Abs[avgMaxdatactest1y] - Abs[avgMindatactest1yi]] + 
+     Abs[Abs[avgMaxdatactest1y] - Abs[avgMindatactest1ys]])/2;
+listic = {ic}
+listfc = {sc}
+listDifc = {Difc}
+
+ib = Abs[Abs[avgMaxdatabtest1y] - Abs[avgMindatabtest1yi]];
+sb = Abs[Abs[avgMaxdatabtest1y] - Abs[avgMindatabtest1ys]];
+Difb = (Abs[Abs[avgMaxdatabtest1y] - Abs[avgMindatabtest1yi]] + 
+     Abs[Abs[avgMaxdatabtest1y] - Abs[avgMindatabtest1ys]])/2;
+listib = {ib}
+listfb = {sb}
+listDifb = {Difb}
+
+ia = Abs[Abs[avgMaxdataatest1y] - Abs[avgMindataatest1yi]];
+sa = Abs[Abs[avgMaxdataatest1y] - Abs[avgMindataatest1ys]];
+Difa = (Abs[Abs[avgMaxdataatest1y] - Abs[avgMindataatest1yi]] + 
+     Abs[Abs[avgMaxdataatest1y] - Abs[avgMindataatest1ys]])/2;
+listia = {ia}
+listfa = {sa}
+listDifa = {Difa}
