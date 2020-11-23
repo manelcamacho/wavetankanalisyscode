@@ -1,0 +1,28 @@
+ 
+voltaged={v0,v10,v20,v30, v40,v50,v60,v70,v80,v90};
+heightd={0,10,20,30,40,50,60,70,80,90};
+dataxyd=Transpose[{voltaged,heightd}];
+datad=TableForm[Tablexyd=Table[dataxyd]]
+ad=ListPlot[dataxyd]
+
+std = Fit[dataxyd, {1,x},x]
+add=Plot[{std},{x,0,100}]
+
+Show[{add,std}]
+ 
+voltaged2={v02,v102,v202,v302, v402,v502,v602,v702,v802,v902};
+heightd2={0,10,20,30,40,50,60,70,80,90};
+dataxyd2=Transpose[{voltaged2,heightd2}];
+datad2=TableForm[Tablexyd2=Table[dataxyd2]]
+ad2=ListPlot[dataxyd2]
+
+std2 = Fit[dataxyd2, {1,x},x]
+add2=Plot[{std2},{x,0,100}]
+
+Show[{add2,std2}]
+ 
+Dif=Abs[voltaged2-voltaged]
+heightd={0,1,2,3,4,5,6,7,8,9};
+Transpose[{heightc,Dif}]
+StandardDeviation[Dif]
+
