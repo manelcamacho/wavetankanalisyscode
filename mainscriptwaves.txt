@@ -12,7 +12,7 @@ ai1 =;
 
 
 datactest1 = 
-  Import["f1/depth/noobstacle/Test1sortedC0.csv", {"Data", 
+  Import["path to wave data probeC.csv", {"Data", 
     Range[ci1, cs1]}];
 datcx = datactest1[[All, 1]];
 datcy = LowpassFilter[datactest1[[All, 2]], .1];
@@ -21,7 +21,7 @@ Length[datactest1]*100;
 
 
 databtest1 = 
-  Import["f1/depth/noobstacle/Test1sortedB0.csv", {"Data", 
+  Import["path to wave data probeB.csv", {"Data", 
     Range[bi1, bs1]}];
 datbx = databtest1[[All, 1]];
 datby = LowpassFilter[databtest1[[All, 2]], .1];
@@ -29,7 +29,7 @@ databtest1 = Transpose[{datbx, datby}];
 Length[databtest1]*100;
 
 dataatest1 = 
-  Import["f1/depth/noobstacle/Test1sortedA0.csv", {"Data", 
+  Import["path to wave data probe A.csv", {"Data", 
     Range[ai1, as1]}];
 datax = dataatest1[[All, 1]];
 datay = LowpassFilter[dataatest1[[All, 2]], .1];
@@ -86,7 +86,7 @@ ai2 = as1;
 
 
 datactest1 = 
-  Import["f1/depth/noobstacle/Test1sortedC0.csv", {"Data", 
+  Import["path to wave data probe C.csv", {"Data", 
     Range[ci2, cs2]}];
 datcx = datactest1[[All, 1]];
 datcy = LowpassFilter[datactest1[[All, 2]], .1];
@@ -94,7 +94,7 @@ datactest1 = Transpose[{datcx, datcy}];
 Length[datactest1]*100;
 
 databtest1 = 
-  Import["f1/depth/noobstacle/Test1sortedB0.csv", {"Data", 
+  Import["path to wave data probe B.csv", {"Data", 
     Range[bi2, bs2]}];
 datbx = databtest1[[All, 1]];
 datby = LowpassFilter[databtest1[[All, 2]], .1];
@@ -102,7 +102,7 @@ databtest1 = Transpose[{datbx, datby}];
 Length[databtest1]*100;
 
 dataatest1 = 
-  Import["f1/depth/noobstacle/Test1sortedA0.csv", {"Data", 
+  Import["path to wave data probe A.csv", {"Data", 
     Range[ai2, as2]}];
 datax = dataatest1[[All, 1]];
 datay = LowpassFilter[dataatest1[[All, 2]], .1];
