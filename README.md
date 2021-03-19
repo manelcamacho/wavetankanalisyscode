@@ -4,4 +4,6 @@ The algorithm uses control points ot track the local maxima and minima of the wa
 
 The code is written in Wolfram language which is free to use in some plattaforms, the algorithm is simple and could ve translated easily to python/R/swift. The code was written using a raspberry pi device.
 
-The code beign gpl does not grant any type of license about the language is written on or the use of any wolfram product. 
+The code beign gpl does not grant any type of license about the language is written on or the use of any wolfram product.
+
+DOI:10.5281/zenodo.4617236
